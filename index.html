@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+        <!-- Vue.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    </head>   
+
+    <body>   
+        <div id="app">
+            <label>calclate date:</label>
+            <input
+                type="datetime-local"
+                v-model="datetimeString"
+                min="2021-01-01T00:00"
+                max="2021-12-31T23:59"
+            />
+            <p>Date: {{ setDateString }}</p>
+            
+            <p>a: {{ getCelestialSphere("a")}}</p>
+            <div></div>
+
+            <p>b: {{ getCelestialSphere("b")}}</p>
+            <div></div>
+
+            <p>days: {{ getCelestialSphere("termDays")}}</p>
+            <div></div>
+
+            <p>P: {{ getCelestialSphere("capitalP")}}</p>
+            <div></div>
+
+            <p>Q: {{ getCelestialSphere("capitalQ")}}</p>
+            <div></div>
+
+            <p>Y: {{ getCelestialSphere("capitalY")}}</p>
+            <div></div>
+
+            <p>S: {{ getCelestialSphere("capitalS")}}</p>
+            <div></div>
+
+            <p>T: {{ getCelestialSphere("capitalT")}}</p>
+            <div></div>
+
+            <p>t: {{ getCelestialSphere("t")}}</p>
+            <div></div>
+
+            <p>θ: {{ getCelestialSphere("theta")}}</p>
+            <div></div>
+
+            <p>cosNθ </p>
+            <tr>
+                <th align="center" width="200px">N</th>
+                <th align="center" width="200px">cosNθ</th>
+            </tr>
+            <div v-for='(cos,index) in getCelestialSphere("cosList")'>
+                <tr v-for='(cos,index) in getCelestialSphere("cosList")'>
+                    <td align="center">{{ index }}</td>
+                    <td align="center">{{ cos.toPrecision(4) }}</td>
+                </tr>
+            </div>
+            <table>
+            <thead>
+                <tr>
+                <th>視赤経Ｒ.Ａ.</th>
+                <th>視赤緯Ｄｅｃ</th>
+                <th>地心距離Ｄｉｓｔ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>{{ getCelestialSphere("rightAscension").toPrecision(4)}}</td>
+                <td>{{ getCelestialSphere("declination").toPrecision(4)}}</td>
+                <td>{{ getCelestialSphere("distance").toPrecision(4)}}</td>
+                </tr>
+            </tbody>
+            </table>
+
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
